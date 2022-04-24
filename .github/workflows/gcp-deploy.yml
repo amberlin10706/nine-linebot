@@ -1,0 +1,25 @@
+name: gcloud app deploy
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - id: 'auth'
+        uses: google-github-actions/auth@v0.7.1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+      - name: 'Deploy to App Engine'
+        uses: google-github-actions/deploy-appengine@v0.8.0
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          deliverables: 'app.yaml'
