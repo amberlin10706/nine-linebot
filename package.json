@@ -2,10 +2,12 @@
   "name": "nine-linebot",
   "version": "1.0.0",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "firebase": "^9.6.11"
   }
 }
