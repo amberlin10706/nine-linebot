@@ -9,7 +9,7 @@ export async function saveData(dto) {
     const docRef = doc(db, dto.collection, dto.doc);
     try {
         await setDoc(docRef, dto.data)
-        console.log("Save Success: ", dto.collection);
+        console.log("Save Success: ", dto.doc);
     } catch (error) {
         console.error("Error adding document: ", error);
     }
