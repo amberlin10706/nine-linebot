@@ -7,7 +7,9 @@
     "start": "node src/index.js"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.3",
-    "firebase": "^9.6.11"
+    "firebase": "^9.6.11",
+    "request": "^2.88.2"
   }
 }

@@ -8,8 +8,8 @@ const db = getFirestore(app);
 export async function saveData(dto) {
     const docRef = doc(db, dto.collection, dto.doc);
     try {
-        const res = await setDoc(docRef, dto.data)
-        console.log("Save Success: ", res);
+        await setDoc(docRef, dto.data)
+        console.log("Save Success: ", dto.collection);
     } catch (error) {
         console.error("Error adding document: ", error);
     }
