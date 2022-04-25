@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from "../../config/firebaseConfig.js";
-import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, getDoc, doc, setDoc, collection, getDocs } from 'firebase/firestore';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -22,4 +22,10 @@ export async function getData(dto) {
     if (docSnap.exists()) {
         return docSnap.data()
     }
+}
+
+export async function getDocuments(dto) {
+    const collectionRef = collection(db, dto.collection)
+    const citySnapshot = await getDocs(collectionRef);
+    return citySnapshot.docs.map(doc => doc.data());
 }

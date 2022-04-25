@@ -1,5 +1,5 @@
 import { constellationMap } from "../const/constellationMap.js";
-import { fetchConstellation } from "../constellation/fetchConstellation.js";
+import { fetchConstellation } from "./fetchConstellation.js";
 import { saveData } from "../firebase/database.js";
 
 export async function fetchAllConstellationDaily() {
@@ -10,6 +10,6 @@ export async function fetchAllConstellationDaily() {
             text,
             generateAt: new Date()
         };
-        await saveData({ collection: "test", doc: data.constellation, data });
+        await saveData({ collection: "constellationDaily", doc: data.constellation, data });
     }
 }

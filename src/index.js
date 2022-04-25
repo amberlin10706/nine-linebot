@@ -1,5 +1,6 @@
 import express from "express"
-import { fetchAllConstellationDaily } from "./fetch/fetchAllConstellationDaily.js"
+import { fetchAllConstellationDaily } from "./constellation/fetchAllConstellationDaily.js"
+import { sendConstellationFortuneToAllLinkUser } from "./constellation/sendConstellationFortuneToAllLinkUser.js";
 
 const app = express()
 
@@ -9,6 +10,12 @@ app.get('/', (req, res) => {
 
 app.get("/api/fetch-constellation", async (req, res) => {
     await fetchAllConstellationDaily()
+    return res.json();
+})
+
+app.get("/api/start", async (req, res) => {
+    await fetchAllConstellationDaily()
+    await sendConstellationFortuneToAllLinkUser()
     return res.json();
 })
 
